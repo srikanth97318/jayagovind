@@ -1,0 +1,15 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K9:56:45 AM [express] serving on port 5000
+[2m9:56:47 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: [postcss] /home/runner/workspace/client/src/index.css:219:3: The `to-light-blue` class does not exist. If `to-light-blue` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: [35mvite:css[39m
+  File: [36m/home/runner/workspace/client/src/index.css[39m:219:2
+[33m  217 |  }
+  218 |  ::-webkit-scrollbar-thumb {
+  219 |    @apply bg-gradient-to-b from-primary to-light-blue rounded-full hover:from-primary/80 hover:to-light-blue/80 transi...
+      |    ^
+  220 |  }
+  221 |  [39m
+[1G[0K⠙[1G[0K

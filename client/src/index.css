@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Space+Grotesk:wght@300..700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Advanced dark black and very dark blue theme with light blue accents */
+    --background: 240 20% 1%;
+    --foreground: 200 15% 96%;
+
+    --card: 240 25% 4%;
+    --card-foreground: 200 15% 96%;
+
+    --popover: 240 25% 4%;
+    --popover-foreground: 200 15% 96%;
+
+    --border: 240 30% 18%;
+    --input: 240 30% 18%;
+
+    /* Advanced dark blue primary with light blue secondary */
+    --primary: 230 70% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Light blue accent color */
+    --light-blue: 199 89% 48%;
+
+    --secondary: 240 25% 8%;
+    --secondary-foreground: 200 15% 96%;
+
+    --muted: 240 25% 14%;
+    --muted-foreground: 240 12% 60%;
+
+    --accent: 240 30% 22%;
+    --accent-foreground: 200 15% 96%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --ring: 230 70% 40%;
+
+    --radius: 0.75rem;
+
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-display: 'Space Grotesk', sans-serif;
+  }
+
+  * {
+    @apply border-border selection:bg-primary/30 selection:text-primary-foreground;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased overflow-x-hidden;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.6), 0 0 40px hsl(var(--primary) / 0.3);
+  }
+
+  .text-glow-light {
+    text-shadow: 0 0 20px hsl(var(--light-blue) / 0.6), 0 0 40px hsl(var(--light-blue) / 0.3);
+  }
+  
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, hsl(var(--border) / 0.3) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.3) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  
+  .glass-panel {
+    @apply bg-background/50 backdrop-blur-xl border border-border/50 shadow-2xl;
+  }
+
+  .glass-panel-advanced {
+    @apply bg-gradient-to-br from-background/60 via-background/40 to-primary/5 backdrop-blur-2xl border border-primary/20 shadow-2xl;
+  }
+
+  /* Gradient border effect */
+  .gradient-border {
+    @apply relative p-0.5 rounded-2xl;
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.5), hsl(var(--light-blue) / 0.3));
+  }
+
+  .gradient-border-inner {
+    @apply bg-background rounded-2xl;
+  }
+
+  /* Sliding text animations */
+  @keyframes slide-words {
+    0%, 100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(-10px);
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes slide-text {
+    0%, 100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateX(20px);
+      opacity: 0.9;
+    }
+  }
+
+  /* Shimmer effect */
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  .animate-shimmer {
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      rgba(199, 210, 254, 0.3),
+      transparent
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  /* Glow pulse */
+  @keyframes glow-pulse {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(96, 165, 250, 0.2), inset 0 0 20px rgba(96, 165, 250, 0.05);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(96, 165, 250, 0.4), inset 0 0 20px rgba(96, 165, 250, 0.1);
+    }
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+
+  .animate-slide-words {
+    animation: slide-words 3s ease-in-out infinite;
+  }
+
+  .animate-slide-text {
+    animation: slide-text 4s ease-in-out infinite;
+  }
+
+  /* Floating animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Spin animation for profile ring */
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 3s linear infinite;
+  }
+
+  /* Gradient text animation */
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient-shift {
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+  }
+}
+
+/* Custom Scrollbar for sleek look */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, hsl(var(--primary) / 1), hsl(var(--light-blue) / 1));
+  border-radius: 9999px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, hsl(var(--primary) / 0.8), hsl(var(--light-blue) / 0.8));
+}
