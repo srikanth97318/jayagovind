@@ -7,7 +7,7 @@ const projects = [
 
   {
     title: "AI-Powered Financial Assistant",
-    description: "An intelligent assistant designed to provide personalized financial guidance and evaluate loan eligibility using machine learning algorithms. Helps users make informed financial decisions.",
+    description: "An intelligent assistant designed to provide personalized financial guidance and evaluate loan eligibility.",
     tags: ["Python", "Machine Learning", "AI", "Data Analysis"],
     icon: Activity,
     gradient: "from-light-blue/30 to-primary/20",

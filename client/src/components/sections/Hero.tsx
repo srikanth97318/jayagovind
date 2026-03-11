@@ -157,7 +157,7 @@ export function Hero() {
                   {/* Initials or placeholder icon */}
                   <div className="relative z-10 text-center">
                      <img
-                          src="/wrr.png"
+                          src={`${import.meta.env.BASE_URL}wrr.png`}
                           alt="Srikanth"
                           className="w-full h-full object-cover rounded-full"
                         />

@@ -1,193 +1,152 @@
 import { motion } from "framer-motion";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Mail, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { useToast } from "@/hooks/use-toast";
-import { insertMessageSchema } from "@shared/schema";
-import type { z } from "zod";
-import { useSendMessage } from "@/hooks/use-messages";
-
-type ContactFormValues = z.infer<typeof insertMessageSchema>;
 
 export function Contact() {
-  const { toast } = useToast();
-  const sendMessage = useSendMessage();
-
-  const form = useForm<ContactFormValues>({
-    resolver: zodResolver(insertMessageSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      message: "",
-    },
-  });
-
-  function onSubmit(data: ContactFormValues) {
-    sendMessage.mutate(data, {
-      onSuccess: () => {
-        toast({
-          title: "Message sent successfully!",
-          description: "Thank you for reaching out. I'll get back to you soon.",
-          className: "bg-green-500/10 border-green-500 text-green-500",
-        });
-        form.reset();
-      },
-      onError: (error) => {
-        toast({
-          title: "Failed to send message",
-          description: error.message,
-          variant: "destructive",
-        });
-      },
-    });
-  }
-
   return (
     <section id="contact" className="py-32 relative bg-secondary/20">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
+
+        {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">Let's <span className="text-primary">Connect</span></h2>
+          <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
+            Let's <span className="text-primary">Connect</span>
+          </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Have a project in mind or want to discuss opportunities? I'm always open to talking about new ideas.
+            Have a project idea, internship opportunity, or collaboration in mind?
+            Feel free to reach out — I’d love to connect.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <motion.div 
+
+          {/* Contact Info */}
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="lg:col-span-5 space-y-8"
           >
-            <div className="glass-panel p-8 rounded-3xl">
-              <h3 className="text-2xl font-display font-bold mb-6">Contact Information</h3>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                    <Mail className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground mb-1">Email</p>
-                    <a href="mailto:contact@srikanth.dev" className="text-lg font-medium hover:text-primary transition-colors">
-                      srikanth97318@gmail.com
-                    </a>
-                  </div>
+            <div className="glass-panel p-8 rounded-3xl space-y-8">
+
+              <h3 className="text-2xl font-display font-bold">
+                Contact Information
+              </h3>
+
+              {/* Email */}
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Mail className="w-5 h-5 text-primary" />
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                    <MapPin className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground mb-1">Location</p>
-                    <p className="text-lg font-medium">Electronic city, Bengaluru, 
-                      India</p>
-                  </div>
+
+                <div>
+                  <p className="text-sm text-muted-foreground">Email</p>
+                  <a
+                    href="mailto:srikanth97318@gmail.com"
+                    className="text-lg font-medium hover:text-primary transition-colors"
+                  >
+                    srikanth97318@gmail.com
+                  </a>
                 </div>
               </div>
+
+              {/* Phone */}
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Phone className="w-5 h-5 text-primary" />
+                </div>
+
+                <div>
+                  <p className="text-sm text-muted-foreground">Phone</p>
+                  <a
+                    href="tel:+919731899969"
+                    className="text-lg font-medium hover:text-primary transition-colors"
+                  >
+                    +91 97318 99969
+                  </a>
+                </div>
+              </div>
+
+              {/* Location */}
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-primary" />
+                </div>
+
+                <div>
+                  <p className="text-sm text-muted-foreground">Location</p>
+                  <p className="text-lg font-medium">
+                    Electronic City, Bengaluru, India
+                  </p>
+                </div>
+              </div>
+
             </div>
           </motion.div>
 
-          <motion.div 
+          {/* Contact Form */}
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="lg:col-span-7"
           >
             <div className="glass-panel p-8 md:p-10 rounded-3xl">
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField
-                      control={form.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Your Name</FormLabel>
-                          <FormControl>
-                            <Input 
-                              placeholder="John Doe" 
-                              className="bg-background/50 h-14 border-border focus-visible:ring-primary/30" 
-                              {...field} 
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Email Address</FormLabel>
-                          <FormControl>
-                            <Input 
-                              placeholder="john@example.com" 
-                              type="email" 
-                              className="bg-background/50 h-14 border-border focus-visible:ring-primary/30" 
-                              {...field} 
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Message</FormLabel>
-                        <FormControl>
-                          <Textarea 
-                            placeholder="Tell me about your project..." 
-                            className="bg-background/50 min-h-[160px] border-border focus-visible:ring-primary/30 resize-none" 
-                            {...field} 
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
+
+              <form
+                action="https://formspree.io/f/your-form-id"
+                method="POST"
+                className="space-y-6"
+              >
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    required
+                    className="h-14 rounded-xl px-4 bg-background/50 border border-border"
                   />
-                  <Button 
-                    type="submit" 
-                    size="lg" 
-                    disabled={sendMessage.isPending}
-                    className="w-full h-14 text-base rounded-xl shadow-[0_0_20px_rgba(var(--primary),0.2)] hover:shadow-[0_0_30px_rgba(var(--primary),0.4)] transition-all"
-                  >
-                    {sendMessage.isPending ? (
-                      <div className="flex items-center gap-2">
-                        <span className="w-5 h-5 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin" />
-                        Sending...
-                      </div>
-                    ) : (
-                      <div className="flex items-center gap-2">
-                        Send Message
-                        <Send className="w-4 h-4" />
-                      </div>
-                    )}
-                  </Button>
-                </form>
-              </Form>
+
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    required
+                    className="h-14 rounded-xl px-4 bg-background/50 border border-border"
+                  />
+
+                </div>
+
+                <textarea
+                  name="message"
+                  placeholder="Tell me about your project..."
+                  required
+                  className="w-full min-h-[160px] rounded-xl p-4 bg-background/50 border border-border resize-none"
+                />
+
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full h-14 text-base rounded-xl hover:shadow-[0_0_30px_rgba(96,165,250,0.5)] transition-all"
+                >
+                  <div className="flex items-center gap-2">
+                    Send Message
+                    <Send className="w-4 h-4" />
+                  </div>
+                </Button>
+
+              </form>
+
             </div>
           </motion.div>
+
         </div>
       </div>
     </section>
