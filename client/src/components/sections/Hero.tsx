@@ -53,8 +53,7 @@ export function Hero() {
               variants={itemVariants}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel-advanced mb-8 border-primary/40"
             >
-              <Sparkles className="w-4 h-4 text-light-blue animate-bounce" />
-              <span className="text-sm font-medium text-light-blue">Building the future with code</span>
+              <span className="text-sm font-medium text-light-blue">AI & ML DEVELOPER</span>
             </motion.div>
 
             <motion.div variants={itemVariants} className="mb-6">

@@ -55,7 +55,7 @@ export function Navbar() {
             onClick={() => document.getElementById('contact')?.scrollIntoView()}
             className="rounded-full px-6 bg-gradient-to-r from-primary/20 to-light-blue/20 text-light-blue hover:from-primary/40 hover:to-light-blue/40 border border-primary/40 hover:border-light-blue/60 hover:shadow-[0_0_20px_rgba(96,165,250,0.4)] transition-all duration-300 font-semibold"
           >
-            Hire Me
+            Message
           </Button>
         </nav>
 
